@@ -164,18 +164,20 @@ graph TD
 ### Introduction
 A user cannot complete multi-factor authentication (MFA) during login. This could be due to not receiving the code/push or the system rejecting the token. The impact ranges from a single user locked out to a full-blown outage if the MFA service is down. Picture your Sales Director or Finance Director sweating bullets because they can’t log into a critical system to approve a million-dollar deal or close quarter-end books, all because MFA is throwing a tantrum. This SOP ensures you save the day fast.
 
-### User Persona Affected
-**Sales Team (remote)**
-**Finance Director (CFO equivalent)**
-**Sales Director**
+### 👤 User Persona Affected
+- **Sales Team (remote)**  
+- **Finance / Sales Director (CFO equivalent)**  
+- **Executives using SSO w/ MFA**
 
 ### Business Impact
-Can’t access CRM, ERP, or email, potentially halting approvals, financial reporting, or sales deals. Disrupts critical business functions. In a pharmaceutical context, this could disrupt financial operations or regulatory submissions.
-> _For a VIP user (like our Finance Director), business impact is High. If widespread, it's a P1 incident because no one can sign in to critical systems. Downtime cost: approximately $1,000 - $5,000+ per hr per C suite/director level employee affected due to halted approvals and strategic decisions._
+- Loss of access to CRM, ERP, and financial systems
+- Downtime = $1K-$5K/hr per exec (yep, it adds up fast)
+- Deals delayed, reporting halted
+> _For a VIP user (like our Finance Director), business impact is High. If widespread, it's a P1 incident because no one can sign in to critical systems_
 
 ### SOP Document
 
-#### Incident Severity and SLA
+#### 🚦 Incident Severity and SLA
 - **Severity**:
     - **P2 (High)** for one user (urgent but not system-wide).
     - **P1 (Critical)** if multiple users or core systems are affected, or for a VIP user like the Finance Director.
@@ -307,6 +309,10 @@ Can’t access CRM, ERP, or email, potentially halting approvals, financial repo
 
 ### Sanofi Annotation
 > At Sanofi, MFA was integral to securing clinical trial data and regulatory submissions. We implemented additional verification steps to comply with healthcare regulations like HIPAA, we often required coordination with compliance teams. I made this mock SOP to almost mirror that rigor but I've generalized it for broader use
+> Tips:
+> 1) MFA time drift is such a silent killer – teach users to fix it
+> 2) Always have VIPs preloaded with backup codes
+> 3) Make your helpdesk's first line script proof
 
 ### Lab Experience
 > In my PharmaTech Labs environment, I simulated 2 MFA failures: 1) by disabling a user’s device in AD and, 2) desynchronizing a virtual authenticator app. I then resolved them by resetting the authentication settings, issuing a backup code, and then re registering the device. I wanted this process to really show the importance of _**automated**_ health checks to prevent sync issues
